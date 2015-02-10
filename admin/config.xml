@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset
+		name="component"
+		label="COM_PERIODICALS_SETTINGS_LABEL"
+		description="COM_PERIODICALS_SETTINGS_DESC"
+		addfieldpath="administrator/components/com_periodicals/models/fields"
+	>
+		<field
+			name="use_year"
+			label="COM_PERIODICALS_USE_YEAR_LABEL"
+			description="COM_PERIODICALS_USE_YEAR_DESC"
+			class="btn-group btn-group-yesno"
+			type="radio"
+			default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
+			name="use_month"
+			label="COM_PERIODICALS_USE_MONTH_LABEL"
+			description="COM_PERIODICALS_USE_MONTH_DESC"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
+			name="use_day"
+			label="COM_PERIODICALS_USE_DAY_LABEL"
+			description="COM_PERIODICALS_USE_DAY_DESC"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="0"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field 
+			type="recursivefolderlist"
+			name="default_location"
+			label="COM_PERIODICALS_SETTINGS_FOLDER_LABEL"
+			description="COM_PERIODICALS_SETTINGS_FOLDER_DESC"
+			directory="images/"
+			hide_none="true"
+			parent="0"
+			maxLevel="10"
+			level="0"
+		/>
+		<field
+			type="radio"
+			name="obscure_titles"
+			label="COM_PERIODICALS_SETTINGS_OBSCURE_TITLES_LABEL"
+			description="COM_PERIODICALS_SETTINGS_OBSCURE_TITLES_DESC"
+			class="btn-group btn-group-yesno"
+			default="0"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field 
+			type="text"
+			name="max_file_size"
+			label="COM_KERKNIEWS_SETTINGS_MAX_FILE_SIZE_LABEL"
+			description="COM_KERKNIEWS_SETTINGS_MAX_FILE_SIZE_DESC"
+			default="2"
+			filter="integer"
+		/>
+	</fieldset>
+	<fieldset
+		name="permissions"
+		label="COM_PERIODICALS_PERIODICALS_PERMISSIONS_LABEL"
+		description="COM_PERIODICALS_PERIODICALS_PERMISSIONS_DESC"
+		>
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			validate="rules"
+			filter="rules"
+			component="com_periodicals"
+			section="component" />
+	</fieldset>
+</config>

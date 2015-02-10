@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_PERIODICALS_DEFAULT_TITLE">
+		<message>
+			<![CDATA[COM_PERIODICALS_VIEW_DEFAULT_DESC]]>
+		</message>
+	</layout>
+	<fields name="params">
+		<fieldset name="appearance">
+			<field
+				width="300"
+				name="body_prefix"
+				type="editor"
+				label="COM_PERIODICALS_BODY_PREFIX_LABEL"
+				description="COM_PERIODICALS_BODY_PREFIX_DESC"
+				filter="safehtml"
+
+			/>
+			<field
+				name="use_titles"
+				type="radio"
+				label="COM_PERIODICALS_USE_TITLES_LABEL"
+				description="COM_PERIODICALS_USE_TITLES_DESC"
+				default="0"
+				class="btn-group btn-group-yesno"
+			>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			<field
+				name="prefix"
+				label="COM_PERIODICALS_PREFIX_LABEL"
+				description="COM_PERIODICALS_PREFIX_DESC"
+				type="text"
+			/>
+			<field
+				name="suffix"
+				label="COM_PERIODICALS_SUFFIX_LABEL"
+				description="COM_PERIODICALS_SUFFIX_DESC"
+				type="text"
+			/>
+			<field
+				name="fill"
+				label="COM_PERIODICALS_FILL_LABEL"
+				description="COM_PERIODICALS_FILL_DESC"
+				type="radio"
+				class="btn-group btn-group-yesno"
+				default="1"
+			>
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field
+				name="use_month_names"
+				label="COM_PERIODICALS_USE_MONTH_NAMES_LABEL"
+				description="COM_PERIODICALS_USE_MONTH_NAMES_DESC"
+				type="radio"
+				class="btn-group btn-group-yesno"
+				default="1"
+			>
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field
+				name="use_month_capitals"
+				label="COM_PERIODICALS_USE_MONTH_CAPITALS_LABEL"
+				description="COM_PERIODICALS_USE_MONTH_CAPITALS_DESC"
+				type="radio"
+				class="btn-group btn-group-yesno"
+				default="1"
+			>
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+		</fieldset>
+	</fields>
+</metadata>
+

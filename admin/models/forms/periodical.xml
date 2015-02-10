@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form enctype="multipart/form-data">
+	<fieldset>
+		<field
+			name="id"
+			type="hidden"
+		/>
+		<field
+			type="file"
+			name="file"
+			label="COM_PERIODICALS_PERIODICALS_FILE_LABEL"
+			description="COM_PERIODICALS_PERIODICALS_FILE_DESC"
+			accept="application/pdf"
+		/>
+		<field
+			type="text"
+			name="year"
+			label="COM_PERIODICALS_PERIODICALS_YEAR_LABEL"
+			description="COM_PERIODICALS_PERIODICALS_YEAR_DESC"
+			maxlength="4"
+			filter="integer"
+			required="true"
+		/>
+		<field
+			type="month"
+			name="month"
+			label="COM_PERIODICALS_PERIODICALS_MONTH_LABEL"
+			description="COM_PERIODICALS_PERIODICALS_MONTH_DESC"
+			required="true"
+			multiple="true"
+		/>
+		<field
+			type="integer"
+			name="day"
+			label="COM_PERIODICALS_PERIODICALS_DAY_LABEL"
+			description="COM_PERIODICALS_PERIODICALS_DAY_DESC"
+			first="1"
+			last="31"
+			step="1"
+			required="true"
+			multiple="true"
+		/>
+		<field
+			type="radio"
+			name="published"
+			label="JSTATUS"
+			class="btn-group btn-group-yesno"
+			default="1"
+		>
+			<option value="1">JTOOLBAR_PUBLISH</option>
+			<option value="0">JTOOLBAR_UNPUBLISH</option>
+		</field>
+		<field
+			type="hidden"
+			name="upload_filename"
+			default=""
+			/>
+
+	</fieldset>
+</form>
