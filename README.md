@@ -22,7 +22,6 @@ The listed articles will behave just like an article, making it fit in with most
 * <b>Fill</b>: If enabled, missing periodicals will appear in the list as well, but without links to the file
 * <b>Use month names</b>: If enabled, names will be written in natural languages instead of appear as a number
 * <b>Capitalize month names</b>: If enabled and month names are used, month names will be capitalized
-* 
 
 ##Access Control List (ACL)
 * Administrator interface acces
