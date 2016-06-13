@@ -8,7 +8,7 @@
     <authorUrl>http://www.demooij.com/</authorUrl>
     <copyright>Copyright (C) 2005 - 2014 Jan de Mooij. All rights reserved.</copyright>
     <license>GNU General Public License version 3 or later.</license>
-    <version>1.0.0</version>
+    <version>1.2.0</version>
     <description>COM_PERIODICALS_DESCRIPTION</description>
  
     <install> 
@@ -28,9 +28,16 @@
         </schemas>
     </update>
 
-    <languages>
-        <language tag="nl-NL">nl-NL.com_periodicals.ini</language>
-        <language tag="nl-NL">nl-NL.com_periodicals.sys.ini</language>
+    <languages folder="admin/language">
+        <language tag="en-GB">en-GB/en-GB.com_periodicals.ini</language>
+        <language tag="en-GB">en-GB/en-GB.com_periodicals.sys.ini</language>
+        <language tag="nl-NL">nl-NL/nl-NL.com_periodicals.ini</language>
+        <language tag="nl-NL">nl-NL/nl-NL.com_periodicals.sys.ini</language>
+    </languages>
+
+    <languages folder="site/language">
+        <language tag="en-GB">en-GB/en-GB.com_periodicals.ini</language>
+        <language tag="nl-NL">nl-NL/nl-NL.com_periodicals.ini</language>
     </languages>
    
     <files folder="site">

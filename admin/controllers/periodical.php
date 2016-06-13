@@ -18,18 +18,25 @@ class PeriodicalsControllerPeriodical extends JControllerForm
 
 	public function save($key = NULL, $urlVar = NULL)
 	{
-
+		$app = JFactory::getApplication();
 		$jinput = JFactory::getApplication()->input;
+		$user = JFactory::getUser();
+		$isNew = $jinput->get('jform', null, null)["id"] == "";
 
-		// Only check and upload the file if its new
-	 	$fileinfo = ($jinput->get('jform', null, null)["id"] == "") ?
-	    	$this->_uploadFile() : array();
+		if(
+			($isNew && !$user->authorise('core.create', 'com_periodicals'))
+				|| (!$isNew && !$user->authorise('core.edit', 'com_periodicals'))
+		) {
+			$app->enqueueMessage(JText::_( 'COM_PERIODICALS_OPERATION_NOT_ALLOWED' ), 'error');
+			return parent::cancel($key, $urlVar);
+		}
 
-	    if($fileinfo === false)
-	    	return parent::cancel($key, $urlVar);
+		$uploadFile = $isNew || (!$isNew && $form["upload_filename"] != null);
+		$fileinfo = ($uploadFile ? $this->_uploadFile() : array());
 
-	    $jform = $jinput->get('jform', null, null);
+		if($fileinfo === false) return parent::cancel($key, $urlVar);
 
+		$jform = $jinput->get('jform', null, null);
 		$months = $jform["month"];
 		sort($jform["month"]);
 		sort($jform["day"]);
@@ -37,7 +44,6 @@ class PeriodicalsControllerPeriodical extends JControllerForm
 		$jform["day"] = implode(",", $jform["day"]);
 		$jform = array_merge($jform, $fileinfo);
 
-		var_dump($jform);
 		$jinput->post->set('jform', $jform);
 
 		// Save the data to the database	
@@ -95,19 +101,23 @@ class PeriodicalsControllerPeriodical extends JControllerForm
 	        switch ($fileError) 
 			{
 		        case 1:
-		        $app->enqueueMessage(JText::_( 'COM_PERIODICALS_FILE_LARGER_THAN_INI_ALLOWS' ), 'error');
+		        $app->enqueueMessage(
+		        	JText::_( 'COM_PERIODICALS_FILE_LARGER_THAN_INI_ALLOWS' ), 'error');
 		        return false;
 		 
 		        case 2:
-		        $app->enqueueMessage(JText::_( 'COM_PERIODICALS_FILE_TO_LARGE_THAN_HTML_FORM_ALLOWS' ), 'error');
+		        $app->enqueueMessage(
+		        	JText::_( 'COM_PERIODICALS_FILE_TO_LARGE_THAN_HTML_FORM_ALLOWS' ), 'error');
 		        return false;
 		 
 		        case 3:
-		        $app->enqueueMessage(JText::_( 'COM_PERIODICALS_ERROR_PARTIAL_UPLOAD' ), 'error');
+		        $app->enqueueMessage(
+		        	JText::_( 'COM_PERIODICALS_ERROR_PARTIAL_UPLOAD' ), 'error');
 		        return false;
 		 
 		        case 4:
-		        $app->enqueueMessage(JText::_( 'COM_PERIODICALS_ERROR_NO_FILE' ), 'error');
+		        $app->enqueueMessage(
+		        	JText::_( 'COM_PERIODICALS_ERROR_NO_FILE' ), 'error');
 		        return false;
 	        }
 		}
@@ -119,14 +129,19 @@ class PeriodicalsControllerPeriodical extends JControllerForm
 		$fileSize = $file['size'];
 		if($fileSize > $params->get('max_file_size') * 1000000)
 		{
-		    JFactory::getApplication()->enqueueMessage(JText::_( sprintf('COM_PERIODICALS_FILE_TO_BIG', $params->get('max_file_size')), 'error'));
+		    JFactory::getApplication()->enqueueMessage(
+		    	JText::_( 
+		    		sprintf('COM_PERIODICALS_FILE_TO_BIG', $params->get('max_file_size')), 
+		    		'error')
+		    	);
 		    return false;
 		}
 		
 		// Check extension
 		if(!$this->_checkExtension($file['name'], ".pdf"))
 		{
-			JFactory::getApplication()->enqueueMessage(JText::_('COM_PERIODICALS_INVALID_EXTENSION'), 'error');
+			JFactory::getApplication()->enqueueMessage(
+				JText::_('COM_PERIODICALS_INVALID_EXTENSION'), 'error');
 			return false;
 		}
 
@@ -134,7 +149,8 @@ class PeriodicalsControllerPeriodical extends JControllerForm
 		$file_info = finfo_open(FILEINFO_MIME_TYPE);
 		if(finfo_file($file_info, $file['tmp_name']) !== "application/pdf")
 		{
-			JFactory::getApplication()->enqueueMessage(JText::_('COM_PERIODICALS_INVALID_MIME_TYPE'), 'error');
+			JFactory::getApplication()->enqueueMessage(
+				JText::_('COM_PERIODICALS_INVALID_MIME_TYPE'), 'error');
 			return false;
 		}
 
@@ -164,7 +180,10 @@ class PeriodicalsControllerPeriodical extends JControllerForm
 		
 		// Target directory path as set in params
 		$default_location = $params->get('default_location');
-		$url = (isset($default_location)) ? $default_location . "/" : JPATH_SITE . "/administrator/components/com_periodicals/files/";
+		$url = (
+			isset($default_location)) ? 
+			$default_location . "/" : 
+			JPATH_SITE . "/administrator/components/com_periodicals/files/";
 
 		// Create the folder if not exists in images folder
 	    if ( !JFolder::exists( $url ) ) {
