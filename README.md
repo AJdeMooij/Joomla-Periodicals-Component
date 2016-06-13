@@ -6,6 +6,8 @@ When you upload a pdf file, you will have to enter the year, month and day the p
 
 The listed articles will behave just like an article, making it fit in with most Joomla templates.
 
+To install, download the ZIP file and select it in the Joomla install menu.
+
 ##Options:
 * <b>Use year</b>: If you enable this option, assigning a year to your periodical is required
 * <b>Use month</b>: If you enable this option, assigning a month to your periodical is required
