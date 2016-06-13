@@ -83,11 +83,11 @@ class PeriodicalsViewPeriodicals extends JViewLegacy
 	protected function getSortFields()
 	{
 		return array(
-			'a.id' => JText::_('COM_HELLOWORLD_HELLOWORLD_HEADING_ID'),
+			'a.id' => JText::_('COM_PERIODICALS_PERIODICALS_HEADING_ID'),
 			'a.filename' => JText::_('COM_PERIODICALS_PERIODICALS_FILENAME'),
-			'a.year' => JText::_('COM_PERIODICALS_PERIODICALS_HEADING_YEAR'),
-			'a.month' => JText::_('COM_PERIODICALS_PERIODICALS_MONTH'),
-			'a.day' => JText::_('COM_PERIODICALS_PERIODICALS_DAY'),
+			'a.year' => JText::_('COM_PERIODICALS_PERIODICALS_YEAR_LABEL'),
+			'a.month' => JText::_('COM_PERIODICALS_PERIODICALS_MONTH_LABEL'),
+			'a.day' => JText::_('COM_PERIODICALS_PERIODICALS_DAY_LABEL'),
 			'a.published' => JText::_('JSTATUS'),
 		);
 	}
