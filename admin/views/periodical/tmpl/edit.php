@@ -7,11 +7,14 @@ JHtml::_('formbehavior.chosen', 'select');
 $document = JFactory::getDocument();
 $document->addScript('components/com_periodicals/js/jquery.mask.js');
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_periodicals&view=periodical&layout=edit&id=' . (int) $this->item->id); ?>"
+<form action="<?php echo JRoute::_('index.php?option=com_periodicals&view=periodical&layout=edit&id=' 
+    . (int) $this->item->id); ?>"
     method="post" name="adminForm" id="adminForm" enctype="multipart/form-data">
     <div class="form-horizontal">
         <fieldset class="adminform">
-            <legend><?php echo JText::_('COM_PERIODICALS_PERIODICALS_EDIT_DETAILS'); ?></legend>
+            <legend>
+                <?php echo JText::_('COM_PERIODICALS_PERIODICALS_EDIT_DETAILS'); ?>
+            </legend>
             <div class="row-fluid">
                 <div class="span6">
                     <?php  
@@ -25,8 +28,16 @@ $document->addScript('components/com_periodicals/js/jquery.mask.js');
                             <?php
                                 if($field->name == 'jform[file]' && !$this->isNew)
                                 {   
-                                    echo '<input id="jform_upload_filename" class="required" name="jform[ignore]" type="text" disabled="" value="' . $this->item->upload_filename . '"></input>';
-                                    echo '<input id="jform_file" type="hidden" value="' . $this->item->file . '" name="jform[file]"></input>';
+                                    $output = '<input id="jform_upload_filename"';
+                                    $output .= ' class="required" name="jform[ignore]"';
+                                    $output .= ' type="text" disabled="" value="';
+                                    $output .= $this->item->upload_filename;
+                                    $output .= '"></input>';
+                                    $output .= '<input id="jform_file"';
+                                    $output .= ' type="hidden" value="';
+                                    $output .= $this->item->file;
+                                    $output .= '" name="jform[file]"></input>';
+                                    echo $output;
                                 }
                                 else
                                     echo $field->input; 
@@ -34,10 +45,13 @@ $document->addScript('components/com_periodicals/js/jquery.mask.js');
                             </div>
                         </div>
                     <?php
-                        }
-                        else // Field should be hidden
-                        {
-                            echo '<input id="' . $field->fieldname . '" class="required" name="' . $field->name . '" type="hidden" value="0"></input>';
+                        } else { // Field should be hidden
+                            $output = '<input id="';
+                            $output .= $field->fieldname;
+                            $output .= '" class="required" name="';
+                            $output .= $field->name;
+                            $output .= '" type="hidden" value="0"></input>';
+                            echo $output;
                         } 
                     endforeach; 
                     ?>
@@ -46,6 +60,7 @@ $document->addScript('components/com_periodicals/js/jquery.mask.js');
         </fieldset>
     </div>
     <input type="hidden" name="task" value="periodical.edit" />
+    <input type="hidden" name="action" value="<?=$isNew ? 'create' : 'edit'?>"/>
     <?php echo JHtml::_('form.token'); ?>
     <script>
     	jQuery("#jform_year").mask("0000");

@@ -50,11 +50,17 @@ class PeriodicalsViewPeriodical extends JViewLegacy
 	 */
 	protected function addToolBar() 
 	{
+		$user = JFactory::getUser();
 		$input = JFactory::getApplication()->input;
 		$input->set('hidemainmenu', true);
 		$isNew = ($this->item->id == 0);
 		JToolBarHelper::title($isNew ? JText::_('COM_PERIODICALS_MANAGER_PERIODICALS_NEW')
 		                             : JText::_('COM_PERIODICALS_MANAGER_PERIODICALS_EDIT'));
+
+		if( 
+			($isNew && $user->authorise('core.create', 'com_periodicals'))
+			|| (!$isNew && $user->authorise('core.edit', 'com_periodicals'))
+		)
 		JToolBarHelper::save('periodical.save');
 		JToolBarHelper::cancel('periodical.cancel', $isNew ? 'JTOOLBAR_CANCEL'
 																: 'JTOOLBAR_CLOSE');

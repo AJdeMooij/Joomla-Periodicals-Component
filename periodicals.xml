@@ -29,6 +29,8 @@
     </update>
 
     <languages>
+        <language tag="en-GB">en-GB.com_periodicals.ini</language>
+        <language tag="en-GB">en-GB.com_periodicals.sys.ini</language>
         <language tag="nl-NL">nl-NL.com_periodicals.ini</language>
         <language tag="nl-NL">nl-NL.com_periodicals.sys.ini</language>
     </languages>

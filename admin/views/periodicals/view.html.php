@@ -56,7 +56,7 @@ class PeriodicalsViewPeriodicals extends JViewLegacy
 		JToolBarHelper::title(JText::_('COM_PERIODICALS_PERIODICALS_TITLE'));
 		
 		// Add new and edit buttons if user is allowed
-		if($user->authorise('core.add', 'com_periodicals'))
+		if($user->authorise('core.create', 'com_periodicals'))
 			JToolBarHelper::addNew('periodical.add');
 		if($user->authorise('core.edit', 'com_periodicals'))
 			JToolBarHelper::editList('periodical.edit');

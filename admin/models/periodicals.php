@@ -34,7 +34,7 @@ class PeriodicalsModelPeriodicals extends JModelList
 	 */
 	protected function populateState($ordering = null, $direction = null)
     {
-        parent::populateState('date', 'asc');
+        parent::populateState('date', 'desc');
     }
 
 	/**
